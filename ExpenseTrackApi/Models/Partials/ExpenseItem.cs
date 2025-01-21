@@ -7,7 +7,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using ExpenseTrackApi.DTOs.ExpenseTrack;
 using Microsoft.EntityFrameworkCore;
 
-namespace ExpenseTrack.Models
+namespace ExpenseTrackApi.Models
 {
     public partial class ExpenseItem
     {

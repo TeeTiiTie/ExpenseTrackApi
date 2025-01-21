@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore;
 
-namespace ExpenseTrack.Models
+namespace ExpenseTrackApi.Models
 {
     [Table("ExpenseItem")]
     public partial class ExpenseItem

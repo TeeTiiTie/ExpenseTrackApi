@@ -8,7 +8,7 @@
    "OutputContextPath": "Data",
    "OutputPath": "Models",
    "PreserveCasingWithRegex": true,
-   "ProjectRootNamespace": "ExpenseTrack",
+   "ProjectRootNamespace": "ExpenseTrackApi",
    "Schemas": null,
    "SelectedHandlebarsLanguage": 0,
    "SelectedToBeGenerated": 0,

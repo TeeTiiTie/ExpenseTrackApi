@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using AutoMapper.QueryableExtensions;
-using ExpenseTrack.Data;
-using ExpenseTrack.Models;
+using ExpenseTrackApi.Data;
+using ExpenseTrackApi.Models;
 using ExpenseTrackApi.DTOs.Master;
 using Microsoft.EntityFrameworkCore;
 

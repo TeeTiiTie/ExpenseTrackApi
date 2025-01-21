@@ -1,4 +1,4 @@
-using ExpenseTrack.Data;
+using ExpenseTrackApi.Data;
 using ExpenseTrackApi.Configurations;
 using ExpenseTrackApi.Helpers;
 using ExpenseTrackApi.Middlewares;

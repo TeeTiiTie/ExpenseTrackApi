@@ -1,6 +1,5 @@
-﻿using ExpenseTrack.Models;
+﻿using ExpenseTrackApi.Models;
 using ExpenseTrackApi.DTOs.Master;
-using ExpenseTrackApi.Models;
 using ExpenseTrackApi.Services.Master;
 using Microsoft.AspNetCore.Mvc;
 using Serilog;

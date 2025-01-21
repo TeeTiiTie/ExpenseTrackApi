@@ -4,9 +4,9 @@ using System;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
-using ExpenseTrack.Models;
+using ExpenseTrackApi.Models;
 
-namespace ExpenseTrack.Data
+namespace ExpenseTrackApi.Data
 {
     public partial class AppDBContext : DbContext
     {

@@ -9,7 +9,7 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace ExpenseTrack.Data
+namespace ExpenseTrackApi.Data
 {
     public static class DbContextExtensions
     {

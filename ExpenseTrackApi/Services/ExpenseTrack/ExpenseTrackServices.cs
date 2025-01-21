@@ -1,8 +1,10 @@
 ﻿using AutoMapper;
-using ExpenseTrack.Data;
-using ExpenseTrack.Models;
+using ExpenseTrackApi.Data;
+using ExpenseTrackApi.DTOs;
 using ExpenseTrackApi.DTOs.ExpenseTrack;
+using ExpenseTrackApi.Helpers;
 using ExpenseTrackApi.Models;
+using GreenPipes.Contracts;
 using Serilog;
 
 namespace ExpenseTrackApi.Services.ExpenseTrack
@@ -59,6 +61,18 @@ namespace ExpenseTrackApi.Services.ExpenseTrack
             _dBContext.Add(expendLog);
             await _dBContext.SaveChangesAsync();
             _logger.Information("[{serviceName}] - Insert table ExpenseLog successful ExpenseLogId: {ExpenseLogId}", _serviceName, expendLog.ExpenseLogId);
+        }
+
+        public async Task<(List<GetExpensesResponseDto> data, PaginationResultDto paginationResultDto)> GetExpenses(GetExpensesRequestDto filter, PaginationDto paginationDto, QuerySortDto sortDto)
+        {
+            var indexStart = ((paginationDto.Page - 1) * paginationDto.RecordsPerPage);
+            var result = await _dBContext.Procedures.usp_ExpenseGroup_SelectAsync(CreatedDateFrom: filter.CreatedDateFrom, CreatedDateTo: filter.CreatedDateTo, BranchId: filter.BranchId, ExpenseStatusId: filter.ExpenseStatusId, SearchText: filter.SearchText, IndexStart: indexStart, PageSize: paginationDto.RecordsPerPage, SortField: sortDto.SortColumn, OrderType: sortDto.Ordering);
+
+            PaginationResultDto paginationResult = result.PaginationListResult(paginationDto);
+
+            var responseDto = _mapper.Map<List<GetExpensesResponseDto>>(result);
+
+            return (responseDto, paginationResult);
         }
     }
 }

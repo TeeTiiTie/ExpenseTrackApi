@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
-using ExpenseTrack.Models;
+using ExpenseTrackApi.DTOs.ExpenseTrack;
 using ExpenseTrackApi.DTOs.Master;
+using ExpenseTrackApi.Models;
 
 namespace ExpenseTrackApi
 {
@@ -18,6 +19,7 @@ namespace ExpenseTrackApi
             // Master
             CreateMap<Application, ApplicationResponseDto>();
             CreateMap<Branch, BranchResponseDto>();
+            CreateMap<usp_ExpenseGroup_SelectResult, GetExpensesResponseDto>();
         }
     }
 }

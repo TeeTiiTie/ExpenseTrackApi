@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using ExpenseTrack.Data;
+using ExpenseTrackApi.Data;
 using ExpenseTrackApi.DTOs;
 using ExpenseTrackApi.Helpers;
 using ExpenseTrackApi.Models;
