@@ -1,10 +1,12 @@
 ﻿using AutoMapper;
+using AutoMapper.QueryableExtensions;
 using ExpenseTrackApi.Data;
 using ExpenseTrackApi.DTOs;
 using ExpenseTrackApi.DTOs.ExpenseTrack;
 using ExpenseTrackApi.Helpers;
 using ExpenseTrackApi.Models;
 using GreenPipes.Contracts;
+using Microsoft.EntityFrameworkCore;
 using Serilog;
 
 namespace ExpenseTrackApi.Services.ExpenseTrack
@@ -73,6 +75,15 @@ namespace ExpenseTrackApi.Services.ExpenseTrack
             var responseDto = _mapper.Map<List<GetExpensesResponseDto>>(result);
 
             return (responseDto, paginationResult);
+        }
+
+        public async Task<List<GetExpenseLogResponseDto>> GetExpenseLog(GetExpenseLogRequestDto filter)
+        {
+            var qry = _dBContext.ExpenseLogs.Where(x => x.IsActive == true && filter.ExpenseGroupId == filter.ExpenseGroupId).OrderByDescending(x => x.CreatedDate);
+
+            var dto = await qry.ProjectTo<GetExpenseLogResponseDto>(_mapper.ConfigurationProvider).ToListAsync();
+
+            return dto;
         }
     }
 }

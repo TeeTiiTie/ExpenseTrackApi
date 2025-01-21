@@ -20,6 +20,7 @@ namespace ExpenseTrackApi
             CreateMap<Application, ApplicationResponseDto>();
             CreateMap<Branch, BranchResponseDto>();
             CreateMap<usp_ExpenseGroup_SelectResult, GetExpensesResponseDto>();
+            CreateMap<ExpenseLog, GetExpenseLogResponseDto>();
         }
     }
 }

@@ -6,6 +6,8 @@ namespace ExpenseTrackApi.Services.ExpenseTrack
 {
     public interface IExpenseTrackServices
     {
+        Task<List<GetExpenseLogResponseDto>> GetExpenseLog(GetExpenseLogRequestDto filter);
+
         Task<(List<GetExpensesResponseDto> data, PaginationResultDto paginationResultDto)> GetExpenses(GetExpensesRequestDto filter, PaginationDto paginationDto, QuerySortDto sortDto);
 
         Task InsertExpenseLog(Guid? expenseGroupId, string expenseDetail, int? userId, string userCode, string userName);

@@ -11,6 +11,7 @@ namespace ExpenseTrackApi.Controllers
 {
     [Route("api/expensetrack")]
     [ApiController]
+    [Authorize]
     public class ExpenseTrackController : ControllerBase
     {
         private readonly IExpenseTrackServices _services;
@@ -51,7 +52,7 @@ namespace ExpenseTrackApi.Controllers
             catch (Exception ex)
             {
                 _logger.Error(ex, "[{ControllerName}] - CreateExpenseTrack error ", _controllerName);
-                return ResponseResult.Failure<CreateExpenseTrackResponseDto>("เกิดข้อผิดพลาดที่ระบบ กรุณาติดต่อ IT Support");
+                return ResponseResult.Failure<CreateExpenseTrackResponseDto>("เกิดข้อผิดพลาดที่ระบบ กรุณาติดต่อ App Support");
             }
         }
 
@@ -67,7 +68,22 @@ namespace ExpenseTrackApi.Controllers
             catch (Exception ex)
             {
                 _logger.Error(ex, "[{ControllerName}] - GetExpenses error ", _controllerName);
-                return ResponseResult.Failure<List<GetExpensesResponseDto>>("เกิดข้อผิดพลาดที่ระบบ กรุณาติดต่อ IT Support");
+                return ResponseResult.Failure<List<GetExpensesResponseDto>>("เกิดข้อผิดพลาดที่ระบบ กรุณาติดต่อ App Support");
+            }
+        }
+
+        [HttpGet("expenselog", Name = "GetExpenseLog")]
+        public async Task<ServiceResponse<List<GetExpenseLogResponseDto>>> GetExpenseLog([FromQuery] GetExpenseLogRequestDto filter)
+        {
+            try
+            {
+                var response = await _services.GetExpenseLog(filter);
+                return ResponseResult.Success(response);
+            }
+            catch (Exception ex)
+            {
+                _logger.Error(ex, "[{ControllerName}] - GetExpenseLog error ", _controllerName);
+                return ResponseResult.Failure<List<GetExpenseLogResponseDto>>("เกิดข้อผิดพลาดที่ระบบ กรุณาติดต่อ App Support");
             }
         }
     }
