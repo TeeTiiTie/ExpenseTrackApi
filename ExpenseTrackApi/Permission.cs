@@ -18,18 +18,25 @@ namespace ExpenseTrackApi
 
         // TODO: หากมีการใช้ OAuth Persmission ให้ใส่ที่นี้
 
-        public const string Test = "example:test_permission";
+        public const string Monitor_User = "expensetrack_api:monitor_user";
 
-        public static AuthorizationPolicy TestPermission
+        public static AuthorizationPolicy Monitor_UserPermission
             = new AuthorizationPolicyBuilder()
-                .RequireClaim(Test)
+                .RequireClaim("permission", Monitor_User)
                 .Build();
 
-        public const string Test2 = "example:test_permission2";
+        public const string Monitor_Branch = "expensetrack_api:monitor_branch";
 
-        public static AuthorizationPolicy Test2Permission
+        public static AuthorizationPolicy Monitor_BranchPermission
             = new AuthorizationPolicyBuilder()
-                .RequireClaim(Test2)
+                .RequireClaim("permission", Monitor_Branch)
+                .Build();
+
+        public const string Monitor_Admin = "expensetrack_api:monitor_admin";
+
+        public static AuthorizationPolicy Monitor_AdminPermission
+            = new AuthorizationPolicyBuilder()
+                .RequireClaim("permission", Monitor_Admin)
                 .Build();
     }
 }

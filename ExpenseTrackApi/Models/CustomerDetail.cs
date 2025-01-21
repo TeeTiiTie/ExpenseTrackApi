@@ -15,7 +15,7 @@ namespace ExpenseTrack.Models
         [StringLength(10)]
         [Unicode(false)]
         public string ApplicationCode { get; set; }
-        [StringLength(10)]
+        [StringLength(20)]
         [Unicode(false)]
         public string CustomerDetailCode { get; set; }
         public string CustomerName { get; set; }

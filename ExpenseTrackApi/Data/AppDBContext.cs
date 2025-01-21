@@ -91,6 +91,8 @@ namespace ExpenseTrack.Data
 
                 entity.Property(e => e.PayeeBankName).HasComment("ธนาคารผู้รับเงิน");
 
+                entity.Property(e => e.SchoolName).HasComment("สถานศึกษา");
+
                 entity.Property(e => e.SchoolYear).HasComment("ปีการศึกษา");
 
                 entity.Property(e => e.ServicedBranchId).HasComment("id สาขาบริการ");
@@ -103,13 +105,11 @@ namespace ExpenseTrack.Data
 
                 entity.Property(e => e.ServicedByUserId).HasComment("UserId ผู้ให้บริการ");
 
-                entity.Property(e => e.ShcoolName).HasComment("สถานศึกษา");
-
-                entity.Property(e => e.TransfeRemark).HasComment("หมายเหตุการโอน");
-
                 entity.Property(e => e.TransferAmount).HasComment("ยอดเงินโอน");
 
                 entity.Property(e => e.TransferDate).HasComment("วันที่โอน");
+
+                entity.Property(e => e.TransferRemark).HasComment("หมายเหตุการโอน");
 
                 entity.HasOne(d => d.ExpenseStatus)
                     .WithMany(p => p.ExpenseGroups)

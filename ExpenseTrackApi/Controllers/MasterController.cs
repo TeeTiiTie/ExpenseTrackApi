@@ -23,6 +23,7 @@ namespace ExpenseTrackApi.Controllers
         private const string _controllerName = nameof(MasterController);
 
         [HttpGet("application", Name = "GetApplication")]
+        [NonAction]
         public async Task<ServiceResponse<List<ApplicationResponseDto>>> GetApplication([FromQuery] ApplicationRequestDto filter)
         {
             try
@@ -38,6 +39,7 @@ namespace ExpenseTrackApi.Controllers
         }
 
         [HttpGet("branch", Name = "GetBranch")]
+        [NonAction]
         public async Task<ServiceResponse<List<BranchResponseDto>>> GetBranch([FromQuery] BranchRequestDto filter)
         {
             try

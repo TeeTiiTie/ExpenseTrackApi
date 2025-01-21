@@ -44,7 +44,7 @@ namespace ExpenseTrack.Models
         /// สถานศึกษา
         /// </summary>
         [StringLength(255)]
-        public string ShcoolName { get; set; }
+        public string SchoolName { get; set; }
         /// <summary>
         /// Id ธนาคารผู้รับเงิน
         /// </summary>
@@ -108,7 +108,7 @@ namespace ExpenseTrack.Models
         /// <summary>
         /// หมายเหตุการโอน
         /// </summary>
-        public string TransfeRemark { get; set; }
+        public string TransferRemark { get; set; }
         /// <summary>
         /// วันที่พิจารณา
         /// </summary>
@@ -152,6 +152,12 @@ namespace ExpenseTrack.Models
         [StringLength(255)]
         public string CancelledByName { get; set; }
         public int? ExpenseStatusId { get; set; }
+        public int? ZebraId { get; set; }
+        [StringLength(255)]
+        public string ZebraName { get; set; }
+        public int? ReceiveDocTypeId { get; set; }
+        [StringLength(255)]
+        public string ReceiveDocTypeName { get; set; }
         public bool? IsActive { get; set; }
         /// <summary>
         /// วันที่สร้างรายการ

@@ -1,4 +1,6 @@
-﻿namespace ExpenseTrackApi.DTOs.ExpenseTrack
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace ExpenseTrackApi.DTOs.ExpenseTrack
 {
     public class CreateExpenseTrackRequestDto
     {
@@ -19,6 +21,10 @@
         public decimal? TotalAmount { get; set; }
         public string? DocumentCode { get; set; }
         public Guid? DocumentId { get; set; }
+        public int? ZebraId { get; set; }
+        public string? ZebraName { get; set; }
+        public int? ReceiveDocTypeId { get; set; }
+        public string? ReceiveDocTypeName { get; set; }
         public List<CreateExpenseTrackDetail>? CreateExpenseTrackDetails { get; set; }
     }
 
@@ -28,9 +34,9 @@
         public string? CustomerName { get; set; }
         public string? LevelRoom { get; set; }
         public string? IdentificatiNo { get; set; }
-        public int? CustomerTypeId { get; set; }
+        public string? CustomerTypeId { get; set; }
         public string? CustomerTypeName { get; set; }
-        public int? StatusId { get; set; }
+        public string? StatusId { get; set; }
         public string? StatusName { get; set; }
         public decimal? Amount { get; set; }
     }

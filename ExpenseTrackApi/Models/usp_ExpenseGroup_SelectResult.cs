@@ -7,21 +7,5 @@ namespace ExpenseTrack.Models
 {
     public partial class usp_ExpenseGroup_SelectResult
     {
-        public Guid ExpenseGroupId { get; set; }
-        public string ExpenseGroupCode { get; set; }
-        public string ApplicationCode { get; set; }
-        public string ShcoolName { get; set; }
-        public string ServicedBy { get; set; }
-        public DateTime? CreatedDate { get; set; }
-        [Column("TotalAmount", TypeName = "decimal(16,2)")]
-        public decimal? TotalAmount { get; set; }
-        [Column("TransferAmount", TypeName = "decimal(16,2)")]
-        public decimal? TransferAmount { get; set; }
-        public DateTime? ReviewedDate { get; set; }
-        public DateTime? TransferDate { get; set; }
-        public string TransfeRemark { get; set; }
-        public int? ExpenseStatusId { get; set; }
-        public string ExpenseStatusName { get; set; }
-        public string CancelledRemark { get; set; }
     }
 }
