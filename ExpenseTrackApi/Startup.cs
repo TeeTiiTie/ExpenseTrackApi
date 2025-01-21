@@ -1,5 +1,5 @@
+using ExpenseTrack.Data;
 using ExpenseTrackApi.Configurations;
-using ExpenseTrackApi.Data;
 using ExpenseTrackApi.Helpers;
 using ExpenseTrackApi.Middlewares;
 using ExpenseTrackApi.Startups;

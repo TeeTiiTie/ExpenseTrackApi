@@ -3,7 +3,7 @@
    "ContextClassName": "AppDBContext",
    "ContextNamespace": null,
    "FilterSchemas": false,
-   "IncludeConnectionString": true,
+   "IncludeConnectionString": false,
    "ModelNamespace": null,
    "OutputContextPath": "Data",
    "OutputPath": "Models",
@@ -32,6 +32,26 @@
       },
       {
          "Name": "[dbo].[ExpenseStatus]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[ext].[Application]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[ext].[Bank]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[ext].[Branch]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[ext].[CustomerDetail]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[ext].[Employee]",
          "ObjectType": 0
       },
       {

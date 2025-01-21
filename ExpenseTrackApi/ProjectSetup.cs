@@ -1,8 +1,9 @@
 ﻿using ExpenseTrackApi.Configurations;
-using ExpenseTrackApi.Data;
 using ExpenseTrackApi.HostedServices;
 using ExpenseTrackApi.Services;
 using ExpenseTrackApi.Services.Auth;
+using ExpenseTrackApi.Services.ExpenseTrack;
+using ExpenseTrackApi.Services.Master;
 using ExpenseTrackApi.Startups;
 using MassTransit.ExtensionsDependencyInjectionIntegration;
 using Quartz;
@@ -26,7 +27,8 @@ namespace ExpenseTrackApi
             // services.AddScoped // ใช้เมื่อแยก Instance ตาม User
             // services.AddTransient // ใช้เมื่อสร้าง Instance ใหม่ทุกครั้งที่เรียกใช้
             // services.AddScoped<IProductService, ProductService>();
-
+            services.AddScoped<IMasterServices, MasterServices>();
+            services.AddScoped<IExpenseTrackServices, ExpenseTrackServices>();
 
             // TODO: ตัวอย่างการเขียน RestSharp หากไม่ใช้ให้ลบ Folder Examples ทิ้ง
             // วิธีการเขียน RestSharp

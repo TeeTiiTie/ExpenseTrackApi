@@ -19,24 +19,35 @@ namespace ExpenseTrack.Data
         {
         }
 
+        public virtual DbSet<Application> Applications { get; set; }
+        public virtual DbSet<Bank> Banks { get; set; }
+        public virtual DbSet<Branch> Branches { get; set; }
+        public virtual DbSet<CustomerDetail> CustomerDetails { get; set; }
+        public virtual DbSet<Employee> Employees { get; set; }
         public virtual DbSet<ExpenseGroup> ExpenseGroups { get; set; }
         public virtual DbSet<ExpenseItem> ExpenseItems { get; set; }
         public virtual DbSet<ExpenseLog> ExpenseLogs { get; set; }
         public virtual DbSet<ExpenseLogType> ExpenseLogTypes { get; set; }
         public virtual DbSet<ExpenseStatus> ExpenseStatuses { get; set; }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            if (!optionsBuilder.IsConfigured)
-            {
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-                optionsBuilder.UseSqlServer("Data Source=192.168.200.49;Initial Catalog=ExpenseTrack;Persist Security Info=True;User ID=develop;Password=\"pn,9y'8Nlv'ihvp\";Encrypt=False");
-            }
-        }
-
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.UseCollation("Thai_100_CI_AI");
+
+            modelBuilder.Entity<Bank>(entity =>
+            {
+                entity.Property(e => e.BankId).ValueGeneratedNever();
+            });
+
+            modelBuilder.Entity<Branch>(entity =>
+            {
+                entity.Property(e => e.BranchId).ValueGeneratedNever();
+            });
+
+            modelBuilder.Entity<Employee>(entity =>
+            {
+                entity.Property(e => e.UserId).IsFixedLength();
+            });
 
             modelBuilder.Entity<ExpenseGroup>(entity =>
             {
@@ -80,6 +91,8 @@ namespace ExpenseTrack.Data
 
                 entity.Property(e => e.PayeeBankName).HasComment("ธนาคารผู้รับเงิน");
 
+                entity.Property(e => e.SchoolYear).HasComment("ปีการศึกษา");
+
                 entity.Property(e => e.ServicedBranchId).HasComment("id สาขาบริการ");
 
                 entity.Property(e => e.ServicedBranchName).HasComment("สาขาบริการ");
@@ -91,8 +104,6 @@ namespace ExpenseTrack.Data
                 entity.Property(e => e.ServicedByUserId).HasComment("UserId ผู้ให้บริการ");
 
                 entity.Property(e => e.ShcoolName).HasComment("สถานศึกษา");
-
-                entity.Property(e => e.ShcoolYear).HasComment("ปีการศึกษา");
 
                 entity.Property(e => e.TransfeRemark).HasComment("หมายเหตุการโอน");
 

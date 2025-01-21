@@ -30,7 +30,7 @@ namespace ExpenseTrack.Models
         /// </summary>
         [StringLength(4)]
         [Unicode(false)]
-        public string ShcoolYear { get; set; }
+        public string SchoolYear { get; set; }
         /// <summary>
         /// id สาขา
         /// </summary>

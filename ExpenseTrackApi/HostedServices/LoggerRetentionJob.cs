@@ -1,4 +1,5 @@
 ﻿using Microsoft.Data.SqlClient;
+using Microsoft.Extensions.Configuration;
 using Quartz;
 using Serilog;
 
@@ -16,10 +17,13 @@ namespace ExpenseTrackApi.HostedServices
         // Priod of retention time in days.
         private int _retentionTime;
 
+        private string _tableName;
+
         public LoggerRetentionJob(IConfiguration configuration)
         {
             _connectionString = configuration.GetConnectionString("DefaultConnection");
             _retentionTime = configuration.GetValue<int>("Serilog:WriteTo:2:Args:sinkOptionsSection:retainedPeriod", 90);
+            _tableName = configuration.GetValue<string>("Serilog:WriteTo:2:Args:sinkOptionsSection:tableName", "[Logs]");
         }
 
         public async Task Execute(IJobExecutionContext context)
@@ -31,9 +35,10 @@ namespace ExpenseTrackApi.HostedServices
                     await connection.OpenAsync();
 
                     var retentionDatetime = DateTime.Now.AddDays(-1 * _retentionTime);
-                    var sqlCommand = new SqlCommand($"DELETE FROM [EventLogging].[Logs] WHERE [TimeStamp] < @RetentionTime;", connection);
+                    var sqlCommand = new SqlCommand($"DELETE FROM [EventLogging].@TableName WHERE [TimeStamp] < @RetentionTime;", connection);
                     sqlCommand.Parameters.Add("@RetentionTime", System.Data.SqlDbType.DateTime);
                     sqlCommand.Parameters["@RetentionTime"].Value = retentionDatetime;
+                    sqlCommand.Parameters["@TableName"].Value = _tableName;
 
                     var returnRows = await sqlCommand.ExecuteNonQueryAsync();
 
